@@ -1,6 +1,6 @@
 <img src="https://raw.githubusercontent.com/js-data/js-data/master/js-data.png" alt="js-data logo" title="js-data" align="right" width="96" height="96" />
 
-# js-data-http
+# js-data-stamplay
 
 [![Slack Status][sl_b]][sl_l]
 [![npm version][npm_b]][npm_l]
@@ -9,7 +9,7 @@
 [![Coverage Status][cov_b]][cov_l]
 [![Codacy][cod_b]][cod_l]
 
-HTTP adapter for [js-data](http://www.js-data.io/).
+Stamplay adapter for [js-data](http://www.js-data.io/).
 
 To get started, visit __[http://js-data.io](http://www.js-data.io)__.
 
@@ -24,15 +24,15 @@ To get started, visit __[http://js-data.io](http://www.js-data.io)__.
 * [License](#license)
 
 ## Quick Start
-`npm install --save js-data js-data-http` or `bower install --save js-data js-data-http`.
+`npm install --save js-data js-data-stamplay` or `bower install --save js-data js-data-stamplay`.
 
-Load `js-data-http.js` after `js-data.js`.
+Load `js-data-stamplay.js` after `js-data.js`.
 
 ```js
-var adapter = new DSHttpAdapter();
+var adapter = new DSStamplayAdapter();
 
 var store = new JSData.DS();
-store.registerAdapter('http', adapter, { default: true });
+store.registerAdapter('stamplay', adapter, { default: true });
 
 // "store" will now use the http adapter for all async operations
 ```
