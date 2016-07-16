@@ -23,10 +23,10 @@
   "scripts": {
     "lint": "standard src/**/*.js",
     "bundle": "webpack --config webpack.config.js --colors",
-    "min": "uglifyjs dist/js-data-http.js -o dist/js-data-http.min.js --source-map dist/js-data-http.min.map --source-map-url js-data-http.min.map -v -m -c --screw-ie8",
+    "min": "uglifyjs dist/js-data-stamplay.js -o dist/js-data-stamplay.min.js --source-map dist/js-data-stamplay.min.map --source-map-url js-data-stamplay.min.map -v -m -c --screw-ie8",
     "version": "node scripts/version.js",
     "banner": "node scripts/banner.js",
-    "gzip": "echo gzipped size: $(cat dist/js-data-http.min.js | gzip -f9 | wc -c)kb",
+    "gzip": "echo gzipped size: $(cat dist/js-data-stamplay.min.js | gzip -f9 | wc -c)kb",
     "build": "npm run lint && npm run bundle && npm run min && npm run version && npm run banner",
     "karma": "karma start",
     "test": "npm run build && npm run karma",
@@ -60,6 +60,7 @@
     "webpack": "1.12.14"
   },
   "dependencies": {
-    "js-data": ">=2.0.0 <3"
+    "js-data": ">=2.0.0 <3",
+    "stamplay-sdk": "^2.0.9"
   }
 }

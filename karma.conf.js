@@ -40,7 +40,8 @@ module.exports = function (config) {
 		files: [
 			'node_modules/es6-promise/dist/es6-promise.js',
 			'node_modules/js-data/dist/js-data.js',
-			'dist/js-data-http.js',
+			'node_modules/stamplay-sdk/dist/stamplay.js',
+			'dist/js-data-stamplay.js',
 			'karma.start.js',
 			'test/**/*.js'
 		],
@@ -48,7 +49,7 @@ module.exports = function (config) {
 		reporters: ['dots', 'coverage'],
 
 		preprocessors: {
-			'dist/js-data-http.js': ['coverage']
+			'dist/js-data-stamplay.js': ['coverage']
 		},
 
 		// optionally, configure the reporter

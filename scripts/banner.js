@@ -23,7 +23,7 @@ function addBanner(filepath) {
   }
 }
 
-addBanner('dist/js-data-http.js');
-addBanner('dist/js-data-http.min.js');
+addBanner('dist/js-data-stamplay.js');
+addBanner('dist/js-data-stamplay.min.js');
 
 console.log('Done!');

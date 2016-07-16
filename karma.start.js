@@ -1,5 +1,5 @@
 // Setup global test variables
-var dsHttpAdapter, User, Post, datastore, DSUtils, queryTransform, p1, p2, p3, p4, p5;
+var dsStamplayAdapter, User, Post, datastore, DSUtils, queryTransform, p1, p2, p3, p4, p5;
 
 // Helper globals
 var fail = function (msg) {
@@ -53,10 +53,10 @@ beforeEach(function () {
     name: 'posts',
     basePath: 'api'
   });
-  dsHttpAdapter = new DSHttpAdapter({
+  dsStamplayAdapter = new DSStamplayAdapter({
     queryTransform: queryTransform
   });
-  datastore.registerAdapter('http', dsHttpAdapter, { default: true });
+  datastore.registerAdapter('stamplay', dsStamplayAdapter, { default: true });
 
   queryTransform.callCount = 0;
 

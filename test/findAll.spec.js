@@ -10,7 +10,7 @@ describe('dsHttpAdapter.findAll(resourceConfig, params, options)', function () {
       _this.requests[0].respond(200, { 'Content-Type': 'application/json' }, JSON.stringify([p1]));
     }, 30);
 
-    return dsHttpAdapter.findAll(Post, {}).then(function (data) {
+    return dsStamplayAdapter.findAll(Post, {}).then(function (data) {
       assert.deepEqual(data, [p1], 'posts should have been found');
 
       setTimeout(function () {
@@ -20,7 +20,7 @@ describe('dsHttpAdapter.findAll(resourceConfig, params, options)', function () {
         _this.requests[1].respond(200, { 'Content-Type': 'application/json' }, JSON.stringify([p1]));
       }, 30);
 
-      return dsHttpAdapter.findAll(Post, {
+      return dsStamplayAdapter.findAll(Post, {
         where: {
           author: {
             '==': 'John'
@@ -75,7 +75,7 @@ describe('dsHttpAdapter.findAll(resourceConfig, params, options)', function () {
       _this.requests[0].respond(200, { 'Content-Type': 'application/json' }, JSON.stringify([{ id: 1 }]));
     }, 30);
 
-    return dsHttpAdapter.findAll(Thing, { userId: 1 }).then(function (data) {
+    return dsStamplayAdapter.findAll(Thing, { userId: 1 }).then(function (data) {
       assert.deepEqual(data, [{ id: 1 }], 'user thing should have been found');
 
       setTimeout(function () {
@@ -85,7 +85,7 @@ describe('dsHttpAdapter.findAll(resourceConfig, params, options)', function () {
         _this.requests[1].respond(200, { 'Content-Type': 'application/json' }, JSON.stringify([{ id: 2 }]));
       }, 30);
 
-      return dsHttpAdapter.findAll(Thing, { postId: 2 });
+      return dsStamplayAdapter.findAll(Thing, { postId: 2 });
     }).then(function(data) {
       assert.deepEqual(data, [{ id: 2 }], 'post thing should have been found');
     });

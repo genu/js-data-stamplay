@@ -4,9 +4,9 @@ module.exports = {
   devtool: 'source-map',
   entry: './src/index.js',
   output: {
-    filename: './dist/js-data-http.js',
+    filename: './dist/js-data-stamplay.js',
     libraryTarget: 'umd',
-    library: 'DSHttpAdapter'
+    library: 'DSStamplayAdapter'
   },
   externals: {
     'js-data': {

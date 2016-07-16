@@ -36,6 +36,6 @@ function version(filepath) {
   });
 }
 
-version('dist/js-data-http.js');
+version('dist/js-data-stamplay.js');
 
 console.log('Done!');

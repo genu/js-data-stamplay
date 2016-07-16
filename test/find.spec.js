@@ -10,7 +10,7 @@ describe('DSHttpAdapter.find(resourceConfig, id, options)', function () {
       _this.requests[0].respond(200, { 'Content-Type': 'application/json' }, JSON.stringify(p1));
     }, 30);
 
-    return dsHttpAdapter.find(Post, 1).then(function (data) {
+    return dsStamplayAdapter.find(Post, 1).then(function (data) {
       assert.deepEqual(data, p1, 'post should have been found');
 
       setTimeout(function () {
@@ -20,7 +20,7 @@ describe('DSHttpAdapter.find(resourceConfig, id, options)', function () {
         _this.requests[1].respond(200, { 'Content-Type': 'application/json' }, JSON.stringify(p1));
       }, 30);
 
-      return dsHttpAdapter.find(Post, 1, { basePath: 'api2' });
+      return dsStamplayAdapter.find(Post, 1, { basePath: 'api2' });
     }).then(function (data) {
       assert.deepEqual(data, p1, 'post should have been found');
       assert.equal(queryTransform.callCount, 2, 'queryTransform should have been called twice');
@@ -46,8 +46,8 @@ describe('DSHttpAdapter.find(resourceConfig, id, options)', function () {
   it('should use default configs', function () {
     var _this = this;
 
-    dsHttpAdapter.defaults.httpConfig.params = { test: 'test' };
-    dsHttpAdapter.defaults.httpConfig.headers = { Authorization: 'test' };
+    dsStamplayAdapter.defaults.httpConfig.params = { test: 'test' };
+    dsStamplayAdapter.defaults.httpConfig.headers = { Authorization: 'test' };
 
     setTimeout(function () {
       assert.equal(1, _this.requests.length);
@@ -60,11 +60,11 @@ describe('DSHttpAdapter.find(resourceConfig, id, options)', function () {
       _this.requests[0].respond(200, { 'Content-Type': 'application/json' }, JSON.stringify(p1));
     }, 30);
 
-    return dsHttpAdapter.find(Post, 1).then(function (data) {
+    return dsStamplayAdapter.find(Post, 1).then(function (data) {
       assert.deepEqual(data, p1, 'post should have been found');
 
-      delete dsHttpAdapter.defaults.httpConfig.params;
-      delete dsHttpAdapter.defaults.httpConfig.headers;
+      delete dsStamplayAdapter.defaults.httpConfig.params;
+      delete dsStamplayAdapter.defaults.httpConfig.headers;
     });
   });
 
@@ -72,7 +72,7 @@ describe('DSHttpAdapter.find(resourceConfig, id, options)', function () {
     var _this = this;
     var loggedError;
 
-    dsHttpAdapter.defaults.error = function (err) {
+    dsStamplayAdapter.defaults.error = function (err) {
       loggedError = err;
     };
 
@@ -83,7 +83,7 @@ describe('DSHttpAdapter.find(resourceConfig, id, options)', function () {
       _this.requests[0].respond(404, { 'Content-Type': 'text/plain' }, 'Not Found');
     }, 30);
 
-    return dsHttpAdapter.find(Post, 1).then(function () {
+    return dsStamplayAdapter.find(Post, 1).then(function () {
       throw new Error('Should not have succeeded!');
     }, function () {
       console.log(loggedError);
@@ -112,7 +112,7 @@ describe('DSHttpAdapter.find(resourceConfig, id, options)', function () {
       _this.requests[0].respond(200, { 'Content-Type': 'application/json' }, JSON.stringify({ id: 1 }));
     }, 30);
 
-    return dsHttpAdapter.find(Thing, 1).then(function () {
+    return dsStamplayAdapter.find(Thing, 1).then(function () {
 
       setTimeout(function () {
         assert.equal(2, _this.requests.length);
@@ -149,7 +149,7 @@ describe('DSHttpAdapter.find(resourceConfig, id, options)', function () {
       _this.requests[0].respond(200, { 'Content-Type': 'application/json' }, JSON.stringify({ id: 1 }));
     }, 30);
 
-    return dsHttpAdapter.find(Thing, 1, { params: { userId: 2 } }).then(function (data) {
+    return dsStamplayAdapter.find(Thing, 1, { params: { userId: 2 } }).then(function (data) {
       assert.deepEqual(data, { id: 1 }, 'thing should have been found');
     });
   });

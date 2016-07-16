@@ -11,7 +11,7 @@ describe('DSHttpAdapter.create(resourceConfig, attrs, options)', function () {
       _this.requests[0].respond(200, { 'Content-Type': 'application/json' }, DSUtils.toJson(p1));
     }, 30);
 
-    return dsHttpAdapter.create(Post, { author: 'John', age: 30 }).then(function (data) {
+    return dsStamplayAdapter.create(Post, { author: 'John', age: 30 }).then(function (data) {
       assert.deepEqual(data, p1, 'post should have been created');
 
       setTimeout(function () {
@@ -21,7 +21,7 @@ describe('DSHttpAdapter.create(resourceConfig, attrs, options)', function () {
         _this.requests[1].respond(200, { 'Content-Type': 'application/json' }, DSUtils.toJson(p1));
       }, 30);
 
-      return dsHttpAdapter.create(Post, { author: 'John', age: 30 }, { basePath: 'api2' });
+      return dsStamplayAdapter.create(Post, { author: 'John', age: 30 }, { basePath: 'api2' });
     }).then(function (data) {
       assert.deepEqual(data, p1, 'post should have been created');
 

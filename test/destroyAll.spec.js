@@ -10,7 +10,7 @@ describe('DSHttpAdapter.destroyAll(resourceConfig, params, options)', function (
       _this.requests[0].respond(204);
     }, 30);
 
-    return dsHttpAdapter.destroyAll(Post, {}).then(function (data) {
+    return dsStamplayAdapter.destroyAll(Post, {}).then(function (data) {
       assert.equal('', data, 'posts should have been found');
 
       setTimeout(function () {
@@ -20,7 +20,7 @@ describe('DSHttpAdapter.destroyAll(resourceConfig, params, options)', function (
         _this.requests[1].respond(204);
       }, 30);
 
-      return dsHttpAdapter.destroyAll(Post, {
+      return dsStamplayAdapter.destroyAll(Post, {
         where: {
           author: {
             '==': 'John'

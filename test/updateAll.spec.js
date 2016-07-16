@@ -10,7 +10,7 @@ describe('DSHttpAdapter.updateAll(resourceConfig, attrs, params, options)', func
       _this.requests[0].respond(200, { 'Content-Type': 'application/json' }, JSON.stringify([p1]));
     }, 30);
 
-    return dsHttpAdapter.updateAll(Post, { author: 'John', age: 30 }).then(function (data) {
+    return dsStamplayAdapter.updateAll(Post, { author: 'John', age: 30 }).then(function (data) {
       assert.deepEqual(data, [p1], 'posts should have been updated');
 
       setTimeout(function () {
@@ -20,7 +20,7 @@ describe('DSHttpAdapter.updateAll(resourceConfig, attrs, params, options)', func
         _this.requests[1].respond(200, { 'Content-Type': 'application/json' }, JSON.stringify([p1]));
       }, 30);
 
-      return dsHttpAdapter.updateAll(Post, { author: 'John', age: 30 }, {
+      return dsStamplayAdapter.updateAll(Post, { author: 'John', age: 30 }, {
         where: {
           author: {
             '==': 'John'

@@ -10,7 +10,7 @@ describe('DSHttpAdapter.destroy(resourceConfig, id, options)', function () {
       _this.requests[0].respond(200, { 'Content-Type': 'text/plain' }, '1');
     }, 30);
 
-    return dsHttpAdapter.destroy(Post, 1).then(function (data) {
+    return dsStamplayAdapter.destroy(Post, 1).then(function (data) {
       assert.deepEqual(data, 1, 'post should have been deleted');
 
       setTimeout(function () {
@@ -20,7 +20,7 @@ describe('DSHttpAdapter.destroy(resourceConfig, id, options)', function () {
         _this.requests[1].respond(200, { 'Content-Type': 'text/plain' }, '1');
       }, 30);
 
-      return dsHttpAdapter.destroy(Post, 1, { basePath: 'api2' });
+      return dsStamplayAdapter.destroy(Post, 1, { basePath: 'api2' });
     }).then(function (data) {
       assert.deepEqual(data, 1, 'post should have been deleted');
       assert.equal(queryTransform.callCount, 2, 'queryTransform should have been called twice');
