@@ -8,7 +8,7 @@ var customLaunchers = {
 	}
 };
 
-var browsers = ['PhantomJS'];
+var browsers = ['Chrome'];
 if (
 	process.env.BROWSERSTACK_USERNAME &&
 	process.env.BROWSERSTACK_ACCESS_KEY
@@ -40,7 +40,8 @@ module.exports = function (config) {
 		files: [
 			'node_modules/es6-promise/dist/es6-promise.js',
 			'node_modules/js-data/dist/js-data.js',
-			'node_modules/stamplay-sdk/dist/stamplay.js',
+      'node_modules/store/store.js',
+			'node_modules/stamplay-sdk/dist/stamplay-nodeps.js',
 			'dist/js-data-stamplay.js',
 			'karma.start.js',
 			'test/**/*.js'
@@ -84,6 +85,6 @@ module.exports = function (config) {
 
 		// Continuous Integration mode
 		// if true, it capture browsers, run tests and exit
-		singleRun: true
+		singleRun: false
 	});
 };

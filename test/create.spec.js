@@ -1,6 +1,6 @@
-describe('DSHttpAdapter.create(resourceConfig, attrs, options)', function () {
+describe('DSStamplayAdapter.create(resourceConfig, attrs, options)', function () {
 
-  it('should make a POST request', function () {
+  it('should create an object', function () {
     var _this = this;
 
     setTimeout(function () {

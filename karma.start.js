@@ -50,21 +50,21 @@ beforeEach(function () {
 
   User = datastore.defineResource('user');
   Post = datastore.defineResource({
-    name: 'posts',
-    basePath: 'api'
+    name: 'posts'
   });
   dsStamplayAdapter = new DSStamplayAdapter({
-    queryTransform: queryTransform
+    queryTransform: queryTransform,
+    appid: 'js-data-stamplay'
   });
-  datastore.registerAdapter('stamplay', dsStamplayAdapter, { default: true });
+  datastore.registerAdapter('stamplay', dsStamplayAdapter, {default: true});
 
   queryTransform.callCount = 0;
 
-  p1 = { author: 'John', age: 30, id: 5 };
-  p2 = { author: 'Sally', age: 31, id: 6 };
-  p3 = { author: 'Mike', age: 32, id: 7 };
-  p4 = { author: 'Adam', age: 33, id: 8 };
-  p5 = { author: 'Adam', age: 33, id: 9 };
+  p1 = {author: 'John', age: 30, id: 5};
+  p2 = {author: 'Sally', age: 31, id: 6};
+  p3 = {author: 'Mike', age: 32, id: 7};
+  p4 = {author: 'Adam', age: 33, id: 8};
+  p5 = {author: 'Adam', age: 33, id: 9};
 
   try {
     this.xhr = sinon.useFakeXMLHttpRequest();
@@ -74,15 +74,6 @@ beforeEach(function () {
     this.xhr.onCreate = function (xhr) {
       requests.push(xhr);
     };
-  } catch (err) {
-    console.error(err);
-  }
-});
-
-afterEach(function () {
-  // Restore the global timer functions to their native implementations
-  try {
-    this.xhr.restore();
   } catch (err) {
     console.error(err);
   }
